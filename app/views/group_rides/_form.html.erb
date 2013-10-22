@@ -1,0 +1,19 @@
+<%= form_for @group_ride do |f| %>
+	<%= render 'shared/errors', object: @group_ride %>
+	<%= f.hidden_field		:leader_id, value: current_user.id %>
+	<%= f.label				:title %>
+	<%= f.text_field		:title, class: "form-control" %>
+	<%= f.label				:description %>
+	<%= f.text_area			:description, class: "form-control" %>
+	<br>
+	<%= f.label				:starts_at, "When" %>
+	<br>
+	<%= f.datetime_select 	:starts_at, ampm: true %>
+	<br>
+	<%= f.label				:duration %>
+	<br>
+	<%= f.select 	 		:duration, "<option>1 Hour</option>".html_safe, class: "form-control" %>
+	<br>
+	<%= f.submit 			"Create Ride", class: "btn btn-default" %>
+
+<% end %>
