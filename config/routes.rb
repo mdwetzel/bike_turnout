@@ -1,8 +1,8 @@
 Biketurnout::Application.routes.draw do
   devise_for :users
-  root        'group_rides#index'
+  root        'rides#index'
   
-  resources   :group_rides
+  resources   :rides
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

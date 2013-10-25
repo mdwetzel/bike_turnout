@@ -1,10 +1,12 @@
+<% provide(:title, "Rides") %>
+
 <div id="upcoming-rides">
 	<h2>Upcoming Rides</h2>
 	
 	<% if @upcoming_rides.any? %>
 		<% @upcoming_rides.each do |ride| %>
 			<article>
-				<header><%= ride.title %></header>
+				<header><%= link_to(ride.title, ride) %></header>
 				<div>
 					Starts <%= ride.starts_at.strftime("%m/%d/%Y at %r") %>
 					(<%= distance_of_time_in_words Time.now, ride.starts_at %> from now)
@@ -24,7 +26,7 @@
 	<% if @past_rides.any? %>
 		<% @past_rides.each do |ride| %>
 			<article>
-				<header><%= ride.title %></header>
+				<header><%= link_to(ride.title, ride) %></header>
 				<div>
 					(Ridden <%= time_ago_in_words(ride.starts_at) %> ago)
 				</div>
@@ -37,10 +39,12 @@
 	<% end %>
 </div>
 
-<h2 id="new-ride">Start a Ride</h2>
+<div class="content">
+	<h2 id="new-ride">Start a Ride</h2>
 
-<% if user_signed_in? %>
-	<%= render 'form' %>
-<% else %>
-<p><%= link_to "Sign in", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %> to start a ride!</p>
-<% end %>
+	<% if user_signed_in? %>
+		<%= render 'form' %>
+	<% else %>
+	<p><%= link_to "Sign in", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %> to start a ride!</p>
+	<% end %>
+</div>

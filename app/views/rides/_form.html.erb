@@ -1,5 +1,5 @@
-<%= form_for @group_ride do |f| %>
-	<%= render 'shared/errors', object: @group_ride %>
+<%= form_for @ride do |f| %>
+	<%= render 'shared/errors', object: @ride %>
 	<%= f.hidden_field		:leader_id, value: current_user.id %>
 	<%= f.label				:title %>
 	<%= f.text_field		:title, class: "form-control" %>
